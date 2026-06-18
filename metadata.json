@@ -1,6 +1,6 @@
 {
-  "name": "100+ QR Code Generator Tools",
-  "description": "A premium, unified SaaS-ready platform featuring over 100 specialized, keyword-optimized separate QR tools, including custom color-tuning, vector logo overlays, and a high-traffic master poster designer in pure English.",
+  "name": "a2zqr-io",
+  "description": "Unified platform featuring specialized QR tools.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
