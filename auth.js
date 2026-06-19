@@ -4,12 +4,12 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDAQXnWZfLGXCaL7dt3HcIYVsTjk9m-Hmw",
-  authDomain: "a2zqr-io.firebaseapp.com",
-  projectId: "a2zqr-io",
-  storageBucket: "a2zqr-io.firebasestorage.app",
-  messagingSenderId: "945066554626",
-  appId: "1:945066554626:web:bd1789d10505d8aa8e3e1b",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
   measurementId: "G-Q44LHQHT7X"
 };
 

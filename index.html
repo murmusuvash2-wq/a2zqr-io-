@@ -519,6 +519,13 @@ let suiteQR = null;
 
 let smartIconsState = { wa: true, maps: true, review: true, cat: true };
 
+function scrollAndFocusPro() {
+  const el = document.getElementById('poster-card');
+  if(el) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 /* 100% FIXED PRODUCTION DATASETS WITHOUT ANY LOOPS OR MODIFICATIONS RE-MAPPED TO EXACT CATEGORIES */
 const TOOLS_DATABASE = [
   { name: "Mathematical Fibonacci Spiral", cat: "Technical & Math", path: "/how-to-create-mathematical-fibonacci-spiral-qr-code" },
@@ -654,19 +661,35 @@ function trackQuality(val) {
 function buildData() {
   const v = id => (document.getElementById(id)||{}).value?.trim() || '';
   switch(curTool) {
-    case 'url': return v('in-url') || 'https://ezqr.io';
+    case 'url': {
+      const url = v('in-url');
+      if (!url) return 'https://ezqr.io';
+      try {
+        new URL(url);
+        return url;
+      } catch {
+        reportSystemError("Invalid URL format!");
+        return 'https://ezqr.io';
+      }
+    }
     case 'wifi': return `WIFI:S:${v('in-ssid')};P:${v('in-pass')};;`;
     case 'vcard': return `BEGIN:VCARD\nFN:${v('in-vcn')}\nTEL:${v('in-vcp')}\nEND:VCARD`;
     case 'whatsapp': return `https://wa.me/${v('in-wa')}`;
-    case 'pdf': return v('in-pdf') || 'https://ezqr.io';
+    case 'pdf': {
+      const pUrl = v('in-pdf');
+      if(!pUrl) return 'https://ezqr.io';
+      try { new URL(pUrl); return pUrl; }
+      catch { reportSystemError("Invalid PDF document link format!"); return 'https://ezqr.io'; }
+    }
     default: return 'https://ezqr.io';
   }
 }
 
 function genQR() {
   try {
-    if (masterQR && typeof masterQR.destroy === 'function') {
-      masterQR.destroy();
+    if (masterQR) {
+      if(typeof masterQR.clear === 'function') masterQR.clear();
+      else if(typeof masterQR.destroy === 'function') masterQR.destroy();
     }
     masterQR = null;
 
@@ -1016,10 +1039,14 @@ function downloadPosterCanvas() {
   });
 }
 
+let renderTimer;
 document.addEventListener('input', e => {
   if (e.target.classList.contains('qi') || e.target.id === 'in-shop' || e.target.id === 'in-matrix-str') {
     if(e.target.id === 'in-shop') document.getElementById('poster-top').textContent = e.target.value;
-    genQR();
+    clearTimeout(renderTimer);
+    renderTimer = setTimeout(() => {
+      requestAnimationFrame(genQR);
+    }, 400);
   }
 });
 

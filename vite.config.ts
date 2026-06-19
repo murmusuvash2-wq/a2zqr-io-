@@ -22,6 +22,12 @@ export default defineConfig(() => {
               .filter(dirent => dirent.isDirectory())
               .map(dirent => [dirent.name, path.resolve(__dirname, `tools/${dirent.name}/index.html`)])
           )
+        },
+        output: {
+          manualChunks: {
+            'vendor': ['firebase/app', 'firebase/analytics', 'firebase/auth'],
+            'auth': ['./auth.js'],
+          }
         }
       }
     },
