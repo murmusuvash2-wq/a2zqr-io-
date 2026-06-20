@@ -12,18 +12,18 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:    #F8FAFC;
-  --s1:    #FFFFFF;
-  --s2:    #F1F5F9;
-  --bd:    #E2E8F0;
-  --bd2:   #CBD5E1;
-  --p:     #0EA5E9;
-  --pl:    #0284C7;
-  --pd:    #0369A1;
-  --pt:    rgba(14,165,233,.15);
-  --pt2:   rgba(14,165,233,.08);
-  --tx:    #0F172A;
-  --mu:    #64748B;
+  --bg:    #040408;
+  --s1:    #0A0A12;
+  --s2:    #12121E;
+  --bd:    #1C1C2E;
+  --bd2:   #28283E;
+  --p:     #7C6EFA;
+  --pl:    #C084FC;
+  --pd:    #A89EFF;
+  --pt:    rgba(124, 110, 250, .15);
+  --pt2:   rgba(124, 110, 250, .08);
+  --tx:    #F2F2FF;
+  --mu:    #8080A0;
   --gr:    #10B981;
   --or:    #F59E0B;
   --re:    #EF4444;
@@ -40,7 +40,7 @@ body{
 
 nav{
   position:sticky;top:0;z-index:100;
-  background:rgba(255,255,255,.92);backdrop-filter:blur(20px);
+  background:rgba(4,4,8,0.95);backdrop-filter:blur(20px);
   border-bottom:1px solid var(--bd); width: 100%;
 }
 .nav-in{
@@ -256,7 +256,7 @@ footer { width: 100%; max-width: 440px; margin: 40px auto 10px; text-align: cent
 }
 
 /* Auth & Payment Modals */
-.overlay-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.7); display: none; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(4px); }
+.overlay-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(4,4,8,0.85); display: none; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(4px); }
 .modal-content { background: var(--s2); border: 1px solid var(--bd); padding: 24px; border-radius: 12px; width: 90%; max-width: 360px; color: var(--tx); text-align: center; }
 .modal-content h2 { margin-bottom: 8px; font-size: 18px; }
 .modal-content p { color: var(--mu); font-size: 13px; margin-bottom: 20px; line-height: 1.4; }
@@ -283,8 +283,104 @@ footer { width: 100%; max-width: 440px; margin: 40px auto 10px; text-align: cent
 .fake-pay-box p.fp-title { color: #10B981; font-weight: 600; margin-bottom: 12px; font-size: 14px; }
 .btn-pay-fail { background: #ef4444; }
 
+/* Custom Added Sections Styling */
+.niche-pills {
+  display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 15px; margin-bottom: 25px; width: 100%; max-width: 440px; margin-left: auto; margin-right: auto;
+}
+.niche-pill {
+  background: var(--s1); border: 1px solid var(--bd); color: var(--mu); font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 20px; text-decoration: none; transition: all 0.2s; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-family: inherit;
+}
+.niche-pill:hover {
+  border-color: var(--p); color: var(--pl); background: var(--pt2);
+}
+
+.section-title-wrap {
+  text-align: center; margin-bottom: 16px; margin-top: 36px; width: 100%; max-width: 440px; margin-left: auto; margin-right: auto;
+}
+.section-title {
+  font-size: 16px; font-weight: 800; color: var(--tx); letter-spacing: -0.4px; margin-bottom: 3px; text-transform: uppercase;
+}
+.section-subtitle {
+  font-size: 11px; color: var(--mu); font-weight: 500;
+}
+
+/* Use Cases Section */
+.use-cases-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; max-width: 440px; margin: 0 auto 24px;
+}
+.use-case-card {
+  background: var(--s1); border: 1px solid var(--bd); border-radius: 12px; padding: 12px; text-align: left; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; gap: 4px;
+}
+.use-case-card:hover {
+  border-color: var(--p); background: var(--pt2); transform: translateY(-1px);
+}
+.use-case-icon {
+  font-size: 18px; margin-bottom: 2px;
+}
+.use-case-title {
+  font-size: 12px; font-weight: 800; color: var(--tx);
+}
+.use-case-desc {
+  font-size: 10px; color: var(--mu); line-height: 1.35;
+}
+
+/* Real QR Examples Gallery */
+.qr-gallery-scroll {
+  display: flex; gap: 12px; overflow-x: auto; padding: 8px 4px 16px; width: 100%; max-width: 440px; margin: 0 auto 24px; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.qr-gallery-scroll::-webkit-scrollbar { display: none; }
+.qr-gallery-card {
+  flex-shrink: 0; width: 115px; background: var(--s1); border: 1px solid var(--bd); border-radius: 12px; padding: 8px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: all 0.2s; cursor: pointer;
+}
+.qr-gallery-card:hover {
+  border-color: var(--p); transform: scale(1.03); box-shadow: 0 8px 16px rgba(14,165,233,0.06);
+}
+.qr-gallery-img {
+  width: 95px; height: 95px; border-radius: 8px; border: 1px solid var(--bd); background: #fff; padding: 4px; display: block;
+}
+.qr-gallery-label {
+  font-size: 9px; font-weight: 700; color: var(--tx); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;
+}
+
+/* Categories Section */
+.categories-nav-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; max-width: 440px; margin: 0 auto 24px;
+}
+.category-nav-card {
+  background: var(--s1); border: 1px solid var(--bd); border-radius: 10px; padding: 12px 8px; text-align: center; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+}
+.category-nav-card:hover {
+  border-color: var(--p); background: var(--pt2); transform: translateY(-1px);
+}
+.category-nav-icon {
+  font-size: 18px;
+}
+.category-nav-label {
+  font-size: 10px; font-weight: 700; color: var(--tx);
+}
+
+/* Trust / Why A2ZQR */
+.trust-features-list {
+  display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 440px; margin: 0 auto 24px; text-align: left; background: var(--s1); border: 1px solid var(--bd); border-radius: 14px; padding: 16px;
+}
+.trust-feature-item {
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.trust-feature-checkmark {
+  color: var(--gr); font-weight: 800; font-size: 14px; line-height: 1.2;
+}
+.trust-feature-text-wrap {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.trust-feature-title {
+  font-size: 12px; font-weight: 700; color: var(--tx);
+}
+.trust-feature-desc {
+  font-size: 10px; color: var(--mu); line-height: 1.35;
+}
+
 </style>
-</head>
+            </head>
 <body>
 
 <nav>
@@ -298,14 +394,23 @@ footer { width: 100%; max-width: 440px; margin: 40px auto 10px; text-align: cent
 <section class="hero">
   <div class="hero-in">
     <div class="live-counter"><div class="pulse-dot"></div><span id="live-count-str">49,284 QR Generated Today</span></div>
-    <h1 class="h1" id="mainHeroTitle">The Complete <span class="g">QR Platform</span></h1>
-    <p class="hsub" id="mainHeroDesc">Generate QR Codes for Websites, Payments, Social Media and Businesses. Create WiFi, UPI, WhatsApp, PDF and Business Profile QR Codes in seconds. Download beautiful printable posters instantly.</p>
+    <h1 class="h1" id="mainHeroTitle">Free Forever <span class="g">QR Codes</span></h1>
+    <p class="hsub" id="mainHeroDesc" style="color: var(--pl); font-weight: 700; margin-bottom: 6px; letter-spacing: -0.2px;">No Expiry • No Scan Limits • Privacy First</p>
+    <p class="hsub-sub" style="font-size: 13px; color: var(--mu); margin-bottom: 16px; font-weight: 600; font-family: inherit;">100+ QR Solutions for Business, Events & Personal Use</p>
     
-    <div class="hero-bullets">100+ Tools <span>•</span> Instant Downloads <span>•</span> Privacy First</div>
-    
-    <div class="hero-actions-row">
-      <a href="#tb-url" class="hero-btn primary" onclick="scrollAndFocusPro()">Generate QR Free</a>
-      <a href="#directory" class="hero-btn">Explore 100+ Tools</a>
+    <div class="hero-actions-row" style="margin-bottom: 20px;">
+      <a href="#tb-url" class="hero-btn primary" onclick="document.querySelector('.studio-box').scrollIntoView({ behavior: 'smooth' }); return false;">Generate QR Free</a>
+      <a href="#directory" class="hero-btn" onclick="document.getElementById('directory').scrollIntoView({ behavior: 'smooth' }); return false;">Explore 100+ Tools</a>
+    </div>
+
+    <div class="niche-pills">
+      <span style="font-size: 10px; font-weight: 800; color: var(--mu); text-transform: uppercase; align-self: center; margin-right: 4px; letter-spacing: 0.5px;">Niche Examples:</span>
+      <button class="niche-pill" onclick="quickLoadExample('restaurant')">🍔 Restaurant</button>
+      <button class="niche-pill" onclick="quickLoadExample('airbnb')">🏡 Airbnb</button>
+      <button class="niche-pill" onclick="quickLoadExample('wedding')">💖 Wedding RSVP</button>
+      <button class="niche-pill" onclick="quickLoadExample('resume')">📄 Resume</button>
+      <button class="niche-pill" onclick="quickLoadExample('arabic')">🕌 Arabic Brand</button>
+      <button class="niche-pill" onclick="quickLoadExample('property')">🏢 Property</button>
     </div>
 
     <div class="studio-box">
@@ -438,6 +543,111 @@ footer { width: 100%; max-width: 440px; margin: 40px auto 10px; text-align: cent
       </div>
     </div>
 
+    <!-- SECTION 2: POPULAR USE CASES -->
+    <div class="section-title-wrap" id="use-cases-section">
+      <h2 class="section-title">✨ Popular Use Cases</h2>
+      <p class="section-subtitle">A2Z QR Solutions matched for clean, targeted actions</p>
+    </div>
+    
+    <div class="use-cases-grid">
+      <div class="use-case-card" onclick="selectToolByNameAndScroll('PDF Menu', 'Restaurant & Hospitality')">
+        <span class="use-case-icon">🍔</span>
+        <span class="use-case-title">Restaurant Menu QR</span>
+        <span class="use-case-desc">Design custom scans for contactless dining & digital menus.</span>
+      </div>
+      <div class="use-case-card" onclick="selectToolByNameAndScroll('Wedding RSVP Form', 'Education & Events')">
+        <span class="use-case-icon">💖</span>
+        <span class="use-case-title">Wedding RSVP QR</span>
+        <span class="use-case-desc">Instantly collect guests invitations and RSVPs in style.</span>
+      </div>
+      <div class="use-case-card" onclick="selectToolByNameAndScroll('Resume / CV Link', 'Utilities & Daily Life')">
+        <span class="use-case-icon">📄</span>
+        <span class="use-case-title">Resume & CV QR</span>
+        <span class="use-case-desc">Link your physical resume flyer to your professional LinkedIn.</span>
+      </div>
+      <div class="use-case-card" onclick="selectToolByNameAndScroll('Portfolio / GitHub', 'Utilities & Daily Life')">
+        <span class="use-case-icon">🎨</span>
+        <span class="use-case-title">Portfolio QR</span>
+        <span class="use-case-desc">Showcase dynamic design work, Git code, or Behance tracks.</span>
+      </div>
+      <div class="use-case-card" onclick="selectToolByNameAndScroll('Virtual Property Tour', 'Real Estate & Auto')">
+        <span class="use-case-icon">🏢</span>
+        <span class="use-case-title">Property Listing QR</span>
+        <span class="use-case-desc">Provide real estate buyers instant 360° virtual home tours.</span>
+      </div>
+      <div class="use-case-card" onclick="selectToolByNameAndScroll('Event Ticket Registration', 'Education & Events')">
+        <span class="use-case-icon">🎟️</span>
+        <span class="use-case-title">Event Registration</span>
+        <span class="use-case-desc">Simplify admissions check-ins for private meetups & forums.</span>
+      </div>
+    </div>
+
+    <!-- SECTION 3: REAL QR EXAMPLE GALLERY -->
+    <div class="section-title-wrap">
+      <h2 class="section-title">🎨 Aesthetic QR Design Gallery</h2>
+      <p class="section-subtitle">Never use a boring black-and-white QR code again. Click to try custom styles instantly!</p>
+    </div>
+    
+    <div class="qr-gallery-scroll">
+      <div class="qr-gallery-card" onclick="quickLoadExample('wedding')">
+        <img class="qr-gallery-img" src="https://api.qrserver.com/v1/create-qr-code/?data=wedding&color=ffffff&bgcolor=be123c" alt="Wedding RSVP QR">
+        <span class="qr-gallery-label">💖 Wedding Guest RSVP</span>
+      </div>
+      <div class="qr-gallery-card" onclick="quickLoadExample('restaurant')">
+        <img class="qr-gallery-img" src="https://api.qrserver.com/v1/create-qr-code/?data=restaurant&color=ffffff&bgcolor=1C1C2E" alt="Restaurant QR">
+        <span class="qr-gallery-label">🍔 Spicegrill Dinner Menu</span>
+      </div>
+      <div class="qr-gallery-card" onclick="quickLoadExample('airbnb')">
+        <img class="qr-gallery-img" src="https://api.qrserver.com/v1/create-qr-code/?data=airbnb&color=ffffff&bgcolor=10B981" alt="Airbnb Welcome QR">
+        <span class="qr-gallery-label">🏡 Cozy Guest Cabin WiFi</span>
+      </div>
+      <div class="qr-gallery-card" onclick="quickLoadExample('arabic')">
+        <img class="qr-gallery-img" src="https://api.qrserver.com/v1/create-qr-code/?data=arabic&color=ffffff&bgcolor=F59E0B" alt="Arabic Brand QR">
+        <span class="qr-gallery-label">🕌 Arabian Luxury Glow</span>
+      </div>
+      <div class="qr-gallery-card" onclick="quickLoadExample('fibonacci')">
+        <img class="qr-gallery-img" src="https://api.qrserver.com/v1/create-qr-code/?data=fibonacci&color=ffffff&bgcolor=312e81" alt="Math Fibonacci QR">
+        <span class="qr-gallery-label">🌀 Mathematical Fibonacci</span>
+      </div>
+      <div class="qr-gallery-card" onclick="quickLoadExample('property')">
+        <img class="qr-gallery-img" src="https://api.qrserver.com/v1/create-qr-code/?data=property&color=ffffff&bgcolor=4f46e5" alt="Property Scan QR">
+        <span class="qr-gallery-label">🏢 Beachside Open House</span>
+      </div>
+    </div>
+
+    <!-- SECTION 4: DYNAMIC CATEGORY NAVIGATION -->
+    <div class="section-title-wrap">
+      <h2 class="section-title">📂 Browse 100+ QR Solutions</h2>
+      <p class="section-subtitle">Select a category folder to instantly jump and filter specific solutions</p>
+    </div>
+    
+    <div class="categories-nav-grid">
+      <div class="category-nav-card" onclick="selectCategoryAndScroll('B2B & Compliance')">
+        <span class="category-nav-icon">🏢</span>
+        <span class="category-nav-label">Business B2B</span>
+      </div>
+      <div class="category-nav-card" onclick="selectCategoryAndScroll('Education & Events')">
+        <span class="category-nav-icon">🎉</span>
+        <span class="category-nav-label">Events & Social</span>
+      </div>
+      <div class="category-nav-card" onclick="selectCategoryAndScroll('Utilities & Daily Life')">
+        <span class="category-nav-icon">❤️</span>
+        <span class="category-nav-label">Personal Life</span>
+      </div>
+      <div class="category-nav-card" onclick="selectCategoryAndScroll('Technical & Math')">
+        <span class="category-nav-icon">🎨</span>
+        <span class="category-nav-label">Art & Math</span>
+      </div>
+      <div class="category-nav-card" onclick="selectCategoryAndScroll('Cyber Security & Privacy')">
+        <span class="category-nav-icon">🔒</span>
+        <span class="category-nav-label">Cyber Security</span>
+      </div>
+      <div class="category-nav-card" onclick="selectCategoryAndScroll('India Regional & Civic')">
+        <span class="category-nav-icon">🇮🇳</span>
+        <span class="category-nav-label">India QR Portal</span>
+      </div>
+    </div>
+
     <div class="premium-studio-suite">
       <div class="suite-head">
         <h2 class="suite-title">Business QR Profile Studio</h2>
@@ -509,6 +719,57 @@ footer { width: 100%; max-width: 440px; margin: 40px auto 10px; text-align: cent
             </div>
           </div>
 
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: WHY A2ZQR / TRUST SECTORS -->
+    <div class="section-title-wrap" style="margin-top: 36px;">
+      <h2 class="section-title">Why Choose A2ZQR?</h2>
+      <p class="section-subtitle">More than just a standard QR generator website</p>
+    </div>
+    
+    <div class="trust-features-list">
+      <div class="trust-feature-item">
+        <span class="trust-feature-checkmark">✔</span>
+        <div class="trust-feature-text-wrap">
+          <span class="trust-feature-title">Free Forever Base</span>
+          <span class="trust-feature-desc">Unlimited clean generation for all dynamic & static base types forever.</span>
+        </div>
+      </div>
+      <div class="trust-feature-item">
+        <span class="trust-feature-checkmark">✔</span>
+        <div class="trust-feature-text-wrap">
+          <span class="trust-feature-title">Zero Watermarks</span>
+          <span class="trust-feature-desc">We never print annoying credit lines or watermarks on your generated posters.</span>
+        </div>
+      </div>
+      <div class="trust-feature-item">
+        <span class="trust-feature-checkmark">✔</span>
+        <div class="trust-feature-text-wrap">
+          <span class="trust-feature-title">No Scan Limits or Expiry</span>
+          <span class="trust-feature-desc">Your generated codes will never randomly expire, stop working, or charge paywalls after a few scans.</span>
+        </div>
+      </div>
+      <div class="trust-feature-item">
+        <span class="trust-feature-checkmark">✔</span>
+        <div class="trust-feature-text-wrap">
+          <span class="trust-feature-title">100+ Specialized Solution Tools</span>
+          <span class="trust-feature-desc">The single largest database of context-designed specific form generators globally.</span>
+        </div>
+      </div>
+      <div class="trust-feature-item">
+        <span class="trust-feature-checkmark">✔</span>
+        <div class="trust-feature-text-wrap">
+          <span class="trust-feature-title">Business & Compliance Ready</span>
+          <span class="trust-feature-desc">Perfect templates for FSSAI compliance, pet-loss ID tags, Airbnb sign-ins, and local digital menus.</span>
+        </div>
+      </div>
+      <div class="trust-feature-item">
+        <span class="trust-feature-checkmark">✔</span>
+        <div class="trust-feature-text-wrap">
+          <span class="trust-feature-title">Aesthetic Premium Designs</span>
+          <span class="trust-feature-desc">Say goodbye to black-and-white boring squares. Download high-resolution vector styled patterns.</span>
         </div>
       </div>
     </div>
@@ -1105,6 +1366,179 @@ function filterToolsDirectory() {
   grid.innerHTML = htmlResult;
 }
 
+function selectCategoryAndScroll(catName) {
+  const directory = document.getElementById('directory');
+  if (directory) {
+    directory.scrollIntoView({ behavior: 'smooth' });
+  }
+  
+  const buttons = document.querySelectorAll('#catTabsRow .cat-btn');
+  let matchedBtn = null;
+  buttons.forEach(btn => {
+    if (btn.textContent.toLowerCase().includes(catName.toLowerCase())) {
+      matchedBtn = btn;
+    }
+  });
+  
+  if (matchedBtn) {
+    switchCategory(matchedBtn.textContent, matchedBtn);
+  }
+}
+
+function selectToolByNameAndScroll(toolName, catName) {
+  selectCategoryAndScroll(catName);
+  const searchInput = document.getElementById('dirSearch');
+  if (searchInput) {
+    searchInput.value = toolName;
+    filterToolsDirectory();
+  }
+}
+
+function quickLoadExample(type) {
+  const tbUrl = document.getElementById('tb-url');
+  const tbWifi = document.getElementById('tb-wifi');
+  const inUrl = document.getElementById('in-url');
+  const inShop = document.getElementById('in-shop');
+  
+  // Clean lock filters
+  if(document.getElementById('lock-overlay')) document.getElementById('lock-overlay').style.display = 'none';
+  if(document.getElementById('qr-out')) document.getElementById('qr-out').style.filter = 'none';
+
+  if (type === 'wedding') {
+    switchTool('url', tbUrl);
+    if(inUrl) inUrl.value = 'https://weddings.io/rsvp/julia-rob';
+    if(inShop) inShop.value = 'JULIA & ROB RSVP';
+    const top = document.getElementById('poster-top');
+    if(top) top.textContent = 'JULIA & ROB RSVP';
+    
+    curColor = '#DC2626';
+    isMultiToned = false;
+    curBg = '#FEF2F2';
+    curDots = 'dots';
+    curCorner = 'rounded';
+    currentActiveStyleMode = 'standard';
+    
+    document.querySelectorAll('.cc').forEach(c => c.classList.remove('on'));
+    const matchedColor = document.querySelector('.cc[style*="DC2626"]');
+    if (matchedColor) matchedColor.classList.add('on');
+    
+    const accLbl = document.getElementById('acc-lbl');
+    if(accLbl) accLbl.textContent = "Design: Classy Rounded";
+  } else if (type === 'restaurant') {
+    switchTool('url', tbUrl);
+    if(inUrl) inUrl.value = 'https://thespicegrill.menu/dinner.pdf';
+    if(inShop) inShop.value = 'SPICE GRILL MENU';
+    const top = document.getElementById('poster-top');
+    if(top) top.textContent = 'SPICE GRILL MENU';
+    
+    curColor = '#000000';
+    isMultiToned = false;
+    curBg = '#ffffff';
+    curDots = 'dots';
+    curCorner = 'extra-rounded';
+    currentActiveStyleMode = 'standard';
+    
+    document.querySelectorAll('.cc').forEach(c => c.classList.remove('on'));
+    const matchedColor = document.querySelector('.cc[style*="000000"]');
+    if (matchedColor) matchedColor.classList.add('on');
+    
+    const accLbl = document.getElementById('acc-lbl');
+    if(accLbl) accLbl.textContent = "Design: Zen Premium";
+  } else if (type === 'airbnb') {
+    switchTool('wifi', tbWifi);
+    const ssid = document.getElementById('in-ssid');
+    const pass = document.getElementById('in-pass');
+    if(ssid) ssid.value = 'Airbnb_Guest_5G';
+    if(pass) pass.value = 'welcome_to_cozy_stay';
+    if(inShop) inShop.value = 'AIRBNB WIFI';
+    const top = document.getElementById('poster-top');
+    if(top) top.textContent = 'AIRBNB WIFI';
+    
+    curColor = '#059669';
+    isMultiToned = false;
+    curBg = '#F0FFF8';
+    curDots = 'rounded';
+    curCorner = 'rounded';
+    currentActiveStyleMode = 'standard';
+    
+    document.querySelectorAll('.cc').forEach(c => c.classList.remove('on'));
+    const matchedColor = document.querySelector('.cc[style*="0596"]');
+    if (matchedColor) matchedColor.classList.add('on');
+    
+    const accLbl = document.getElementById('acc-lbl');
+    if(accLbl) accLbl.textContent = "Design: Classy Rounded";
+  } else if (type === 'arabic') {
+    switchTool('url', tbUrl);
+    if(inUrl) inUrl.value = 'https://arabianperfumes.com/luxury-touch';
+    if(inShop) inShop.value = 'ARABIAN GOLD';
+    const top = document.getElementById('poster-top');
+    if(top) top.textContent = 'ARABIAN GOLD';
+    
+    curColor = '#4338CA';
+    isMultiToned = true;
+    colorShadesArray = ['#06B6D4', '#3B82F6', '#A855F7'];
+    curBg = '#ECFEFF';
+    curDots = 'dots';
+    curCorner = 'extra-rounded';
+    currentActiveStyleMode = 'standard';
+    
+    document.querySelectorAll('.cc').forEach(c => c.classList.remove('on'));
+    const matchedColor = document.querySelector('.cc[style*="linear-gradient"]');
+    if (matchedColor) matchedColor.classList.add('on');
+    
+    const accLbl = document.getElementById('acc-lbl');
+    if(accLbl) accLbl.textContent = "Design: Dot Matrix";
+  } else if (type === 'fibonacci') {
+    switchTool('url', tbUrl);
+    if(inUrl) inUrl.value = 'https://math-explorer.org/fibonacci-spiral';
+    if(inShop) inShop.value = 'FIBONACCI SPIRAL';
+    const top = document.getElementById('poster-top');
+    if(top) top.textContent = 'FIBONACCI SPIRAL';
+    
+    curColor = '#4338CA';
+    isMultiToned = true;
+    colorShadesArray = ['#4F46E5', '#7C3AED', '#EC4899'];
+    curBg = '#FAF5FF';
+    curDots = 'dots';
+    curCorner = 'extra-rounded';
+    currentActiveStyleMode = 'standard';
+    
+    document.querySelectorAll('.cc').forEach(c => c.classList.remove('on'));
+    const matchedColor = document.querySelector('.cc[style*="4F46E5"]');
+    if (matchedColor) matchedColor.classList.add('on');
+    
+    const accLbl = document.getElementById('acc-lbl');
+    if(accLbl) accLbl.textContent = "Design: Fluid Wave";
+  } else if (type === 'property') {
+    switchTool('url', tbUrl);
+    if(inUrl) inUrl.value = 'https://zillow.com/homes/luxury-estate-villa';
+    if(inShop) inShop.value = 'OPEN HOUSE TOUR';
+    const top = document.getElementById('poster-top');
+    if(top) top.textContent = 'OPEN HOUSE TOUR';
+    
+    curColor = '#059669';
+    isMultiToned = false;
+    curBg = '#F0FFF8';
+    curDots = 'dots';
+    curCorner = 'extra-rounded';
+    currentActiveStyleMode = 'standard';
+    
+    document.querySelectorAll('.cc').forEach(c => c.classList.remove('on'));
+    const matchedColor = document.querySelector('.cc[style*="0596"]');
+    if (matchedColor) matchedColor.classList.add('on');
+    
+    const accLbl = document.getElementById('acc-lbl');
+    if(accLbl) accLbl.textContent = "Design: Fluid Wave";
+  }
+  
+  genQR();
+  
+  const studio = document.querySelector('.studio-box');
+  if (studio) {
+    studio.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 function handleCardNav(name, path) {
   window.location.href = '/tools' + path + '/';
 }
@@ -1192,6 +1626,6 @@ window.addEventListener('load', () => {
   genQR(); renderDirectoryCards(TOOLS_DATABASE); syncSuitePreview(); 
 });
 </script>
-<script type="module" src="/auth.js"></script>
+  <script type="module" src="/auth.js"></script>
 </body>
 </html>
