@@ -6,7 +6,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const CACHE_FILE = path.join(process.cwd(), "daily-templates-cache.json");
+const CACHE_FILE = process.env.VERCEL || process.env.NODE_ENV === "production"
+  ? "/tmp/daily-templates-cache.json"
+  : path.join(process.cwd(), "daily-templates-cache.json");
 
 // Dynamic Daily Themes based on the day of the week
 const DAILY_THEMES = [
@@ -60,7 +62,9 @@ app.use(express.json());
 const PORT = 3000;
 
   // API Route for automatic daily template cache generation
-  const SCHEDULE_FILE = path.join(process.cwd(), "daily-templates-schedule.json");
+  const SCHEDULE_FILE = process.env.VERCEL || process.env.NODE_ENV === "production"
+    ? "/tmp/daily-templates-schedule.json"
+    : path.join(process.cwd(), "daily-templates-schedule.json");
 
   // Default schedule config
   const defaultSchedule = {
@@ -93,9 +97,10 @@ const PORT = 3000;
 
   async function generateContentWithFallback(ai: any, params: any) {
     const modelsToTry = [
-      "gemini-3.5-flash",
-      "gemini-flash-latest",
-      "gemini-3.1-flash-lite"
+      "gemini-2.5-flash",
+      "gemini-2.5-pro",
+      "gemini-2.0-flash",
+      "gemini-1.5-flash"
     ];
     
     let lastError: any = null;
@@ -150,6 +155,7 @@ Your task is to generate exactly 10 high-end, completely unique QR Code template
 Each design fits a 400px wide by 600px high visual card.
 The QR code container sits precisely at the center (X=100-300, Y=200-400), so place text elements either at the top (Y=40-160) or at the bottom (Y=440-540) to prevent overlap.
 Adhere strictly to the response schema. Ensure that your output contains exactly 10 design templates. Return valid JSON only.`,
+        temperature: 0.15,
         responseMimeType: "application/json",
         responseSchema: {
           type: Type.OBJECT,
@@ -330,8 +336,12 @@ Adhere strictly to the response schema. Ensure that your output contains exactly
       parsedData.date = todayDate;
 
       // Save to cache file for robust persistence
-      fs.writeFileSync(CACHE_FILE, JSON.stringify(parsedData, null, 2), "utf-8");
-      console.log(`[Cache Saved] Successfully cached 10 templates for ${todayDate}`);
+      try {
+        fs.writeFileSync(CACHE_FILE, JSON.stringify(parsedData, null, 2), "utf-8");
+        console.log(`[Cache Saved] Successfully cached 10 templates for ${todayDate}`);
+      } catch (writeErr) {
+        console.warn("Failed to write daily-templates cache file, but continuing response:", writeErr);
+      }
 
       return res.json(parsedData);
     } catch (err: any) {
